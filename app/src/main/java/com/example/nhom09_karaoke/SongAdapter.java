@@ -18,6 +18,10 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
         this.lstSong = lstSong;
     }
 
+    public SongAdapter() {
+
+    }
+
     @NonNull
     @Override
     public SongAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -31,7 +35,6 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull SongAdapter.ViewHolder holder, int position) {
         Song temp = lstSong.get(position);
-
         holder.txtId.setText(temp.getMaSo());
         holder.txtnameSong.setText(temp.getNameSong());
         holder.txtLyric.setText(temp.getLyric());
@@ -41,8 +44,14 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
 
     @Override
     public int getItemCount() {
+
         return lstSong.size();
     }
+
+    public void setSongList(List<Song> songs) {
+        this.lstSong = songs;
+    }
+
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView txtId, txtnameSong,txtLyric, txtAuthor;
