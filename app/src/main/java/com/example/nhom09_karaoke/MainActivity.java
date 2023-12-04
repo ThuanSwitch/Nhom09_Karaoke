@@ -1,7 +1,9 @@
 package com.example.nhom09_karaoke;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -18,11 +20,14 @@ public class MainActivity extends AppCompatActivity {
     private static List<Song> listSong = Song.getListSong();
     private RecyclerView rcSong;
     private SongAdapter adapter;
+    private ItemTouchHelper itemTouchHelper;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         rcSong = findViewById(R.id.rcSong);
+        itemTouchHelper = new ItemTouchHelper(simpleCallback);
+        itemTouchHelper.attachToRecyclerView(rcSong);
         Intent intent1 = getIntent();
         if (intent1 != null && intent1.hasExtra("textId")) {
             String a = intent1.getStringExtra("textId");
@@ -42,7 +47,18 @@ public class MainActivity extends AppCompatActivity {
         rcSong.setAdapter(adapter);
         rcSong.setLayoutManager(new LinearLayoutManager(this));
     }
+    ItemTouchHelper.SimpleCallback simpleCallback = new ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT | ItemTouchHelper.LEFT) {
+        @Override
+        public boolean onMove(@NonNull RecyclerView recyclerView, @NonNull RecyclerView.ViewHolder viewHolder, @NonNull RecyclerView.ViewHolder target) {
+            return false;
+        }
 
+        @Override
+        public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
+            listSong.remove(viewHolder.getAdapterPosition());
+            adapter.notifyDataSetChanged();
+        }
+    };
     public void addScreen(View view) {
         Intent intent = new Intent(this, addActivity.class);
         startActivity(intent);
