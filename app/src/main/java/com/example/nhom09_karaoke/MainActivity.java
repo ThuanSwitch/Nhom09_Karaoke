@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity {
     private static List<Song> listSong = Song.getListSong();
     private RecyclerView rcSong;
     private SongAdapter adapter;
-    private SongViewModel songViewModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
             String c = intent1.getStringExtra("textLyric");
             String d = intent1.getStringExtra("textSinger");
             Song newSong = new Song(a, b, c, d);
-
+            listSong.add(newSong);
             for (Song song : listSong) {
                 Log.d("MainActivity", "Song: " + song.getNameSong());
             }
