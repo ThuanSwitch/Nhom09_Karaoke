@@ -36,6 +36,8 @@ public class SongAdapter extends RecyclerView.Adapter<SongAdapter.ViewHolder> {
     public void onBindViewHolder(@NonNull SongAdapter.ViewHolder holder, int position) {
         Song temp = lstSong.get(position);
         holder.txtId.setText(temp.getMaSo());
+        String a = holder.txtId.getText().toString();
+        System.out.println(a);
         holder.txtnameSong.setText(temp.getNameSong());
         holder.txtLyric.setText(temp.getLyric());
         holder.txtAuthor.setText(temp.getSinger());
