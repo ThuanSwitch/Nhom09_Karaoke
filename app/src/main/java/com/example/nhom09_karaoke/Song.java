@@ -50,24 +50,8 @@ public class Song {
 
     public static List<Song> getListSong (){
         List<Song> lsSong = new ArrayList<>();
-//        lsSong.add(new Song("999999","Thất Tình","Anh đã không giữ" +
-//                " được nhiều hạnh phúc cho em Nhiều khi giận nhau, nước mắt em cứ rơi thật nhiều Anh xin lỗi em, hãy tha thứ cho anh lần này. Đừng rời xa anh, em nói đi, Em rất yêu anh","Trịnh Đình Quang"));
-        lsSong.add(new Song("1","1","1","1"));
-        lsSong.add(new Song("2","2","2","2"));
-//        lsSong.add(new Song("1","1","1","1"));
-//        lsSong.add(new Song("2","2","2","2"));
-//        lsSong.add(new Song("1","1","1","1"));
-//        lsSong.add(new Song("2","2","2","2"));
-//        lsSong.add(new Song("1","1","1","1"));
-//        lsSong.add(new Song("2","2","2","2"));
-//        lsSong.add(new Song("1","1","1","1"));
-//        lsSong.add(new Song("2","2","2","2"));
-//        lsSong.add(new Song("1","1","1","1"));
-//        lsSong.add(new Song("2","2","2","2"));
-//        lsSong.add(new Song("1","1","1","1"));
-//        lsSong.add(new Song("2","2","2","2"));
-//        lsSong.add(new Song("1","1","1","1"));
-//        lsSong.add(new Song("2","2","2","2"));
+        lsSong.add(new Song("999999","Thất Tình","Anh đã không giữ" +
+                " được nhiều hạnh phúc cho em Nhiều khi giận nhau, nước mắt em cứ rơi thật nhiều Anh xin lỗi em, hãy tha thứ cho anh lần này. Đừng rời xa anh, em nói đi, Em rất yêu anh","Trịnh Đình Quang"));
         return  lsSong;
      }
 

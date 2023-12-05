@@ -16,7 +16,6 @@ public class SongViewModel extends ViewModel {
         }
         return songList;
     }
-
     public void addSong(Song song) {
         List<Song> currentList = songList.getValue();
         if (currentList == null) {

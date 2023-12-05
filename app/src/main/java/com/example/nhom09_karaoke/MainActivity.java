@@ -7,6 +7,8 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,13 +37,24 @@ public class MainActivity extends AppCompatActivity {
             String c = intent1.getStringExtra("textLyric");
             String d = intent1.getStringExtra("textSinger");
             Song newSong = new Song(a, b, c, d);
-            listSong.add(newSong);
-            for (Song song : listSong) {
-                Log.d("MainActivity", "Song: " + song.getNameSong());
+            if (check(newSong.getMaSo())==true)
+            {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.setTitle("Notifition");
+                builder.setMessage("Trung id");
+                Dialog dialog = builder.create();
+                dialog.show();
+            }else {
+                listSong.add(newSong);
+
+                for (Song song : listSong) {
+                    Log.d("MainActivity", "Song: " + song.getNameSong());
+                }
+                if (adapter != null) {
+                    adapter.notifyDataSetChanged();
+                }
             }
-            if (adapter != null) {
-                adapter.notifyDataSetChanged();
-            }
+
         }
         adapter = new SongAdapter(listSong);
         rcSong.setAdapter(adapter);
@@ -62,6 +75,16 @@ public class MainActivity extends AppCompatActivity {
     public void addScreen(View view) {
         Intent intent = new Intent(this, addActivity.class);
         startActivity(intent);
+    }
+    public Boolean check (String id){
+        for(int i=0;i<listSong.size();i++)
+        {
+            if(id.equals(listSong.get(i).getMaSo()))
+            {
+               return true;
+            }
+        }
+        return false;
     }
     
 }
